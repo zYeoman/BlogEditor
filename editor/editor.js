@@ -12,8 +12,11 @@
     hmdModeLoader: "https://cdn.jsdelivr.net/npm/codemirror/",
   })
   editor.on("change", debounce(function(cm, change){
-      post(window.location.href, {data:editor.getValue()})
-  }, 2500))
+    var reg = /date: \d*-\d*-\d*.*/
+    var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+    var localTimeString = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -5).replace("T", " ") + " +0800";
+    post(window.location.href, {data:editor.getValue().replace(reg, 'date: '+localTimeString)})
+  }, 1000))
 
   function post(path, params) {
     postAjax(path, params, function(responseText){Toastify({text: responseText}).showToast()})
