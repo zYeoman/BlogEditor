@@ -11,6 +11,7 @@ Serve Editor for Jekyll
 """
 
 import os
+import datetime
 from flask import Flask, render_template, request
 app = Flask(__name__, template_folder='editor',
             static_folder='editor')
@@ -50,8 +51,22 @@ def serve_file(filename=None):
             return "Save Failure"
 
     files = sorted_dir(base)
+    head = '---\nlayout: post\n' \
+        'title: \n' \
+        'category: 法\n' \
+        'date: %Y-%m-%d %H:%M:%S +0800\n' \
+        'create: %Y-%m-%d %H:%M:%S +0800\n' \
+        'tags: \n'\
+        '  - \n'  \
+        '---\n\n' \
+        '- TOC\n' \
+        '{{:toc}}\n\n# 404'
+    head = datetime.datetime.now().strftime(head)
     if filename is not None and filename.endswith('.md'):
-        with open(base + filename, 'r') as f:
-            return render_template('index.html', text=f.read(), files=files)
+        if os.path.exists(base + filename):
+            with open(base + filename, 'r') as f:
+                return render_template('index.html', text=f.read(), files=files)
+        else:
+            return render_template('index.html', text=head, files=files)
     else:
         return ""
