@@ -18,19 +18,25 @@
 
 <div id="test-box">
     <div class="test-item">
-        <button onclick="HyperMD.switchToNormal(editor)">
-             Normal
+        <button id="toggle">
+             Toggle
         </button>
-        <div class="test-tooltip">Use default theme provided by CodeMirror, disable HyperMD's visual tricks.</div>
+        <div class="test-tooltip">Toggle between HyperMD Mode and Nomal</div>
     </div>
 
     <div class="test-item">
-        <button onclick="HyperMD.switchToHyperMD(editor)">
-             HyperMD Mode
+        <button id="create">
+             New File
         </button>
-        <div class="test-tooltip">Revert previous button's change.</div>
+        <div class="test-tooltip">Create New File</div>
     </div>
 
+    <div class="test-item">
+        <button id="delete">
+             Delete
+        </button>
+        <div class="test-tooltip">Delete This File</div>
+    </div>
     <div class="test-item">
       <input type="text" value="" name="search" id="search" placeholder="Search..."/>
     </div>
@@ -105,9 +111,8 @@
 <script src="https://cdn.jsdelivr.net/npm/hypermd/powerpack/fold-emoji-with-emojione.js"></script>
 <!-- 搜索 -->
 <script src="https://cdn.jsdelivr.net/npm/pinyin-match"></script>
-<!-- 提示 -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<!-- SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 <!-- ----------------------------------------------------------------------------------- -->
 <!-- Let's ROCK -->

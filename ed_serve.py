@@ -37,11 +37,17 @@ def serve_index():
 @app.route('/<filename>', methods=['POST', 'GET'])
 def serve_file(filename=None):
     if request.method == 'POST':
-        with open(base + filename, 'w') as f:
+        if request.form.get('action', None) == 'Delete':
+            os.remove(base + filename)
+            return "Delete Success"
+        else:
             if request.form.get('data', None) is not None:
-                f.write(request.form['data'].replace('\r', ''))
-                return "Save Success!"
-        return "Save Failure"
+                if request.form.get('action', None) == 'Save' and os.path.exists(base + filename):
+                    return "File Exists!"
+                with open(base + filename, 'w') as f:
+                    f.write(request.form['data'].replace('\r', ''))
+                    return "Save Success!"
+            return "Save Failure"
 
     files = sorted_dir(base)
     if filename is not None and filename.endswith('.md'):
