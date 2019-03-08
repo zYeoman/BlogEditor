@@ -26,7 +26,7 @@
           title: responseText
       })
     })
-  }, 1000))
+  }, 5000))
 
   function localeTime() {
     var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
@@ -127,8 +127,8 @@
         var title = result.value[1]
         var category = result.value[2]
         var current = localeTime()
-        var filename = current.slice(0,10)+'-'+path.replace(/ /g,'-')+'.md'
-        var url = document.location.href.replace(/\d{4}-\d{2}-\d{2}-.*\.md/, filename)
+        var filename = '/' + current.slice(0,10)+'-'+path.replace(/ /g,'-')+'.md'
+        var url = document.location.href.replace(/\/(\d{4}-\d{2}-\d{2}-.*\.md)?$/, filename)
         var str = '---\nlayout: post\ntitle: '+title+'\ncategory: '+category+'\ndate: '+current+'\ncreate: '+current+'\ntags: \n  - \n---\n\n- TOC\n{:toc}'
         postAjax(url, {data: str, action: 'Save'}, (responseText) => {
           var type='success'
