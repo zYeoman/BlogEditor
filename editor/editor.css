@@ -34,6 +34,10 @@ h2 {
     font-size: 1.4em;
 }
 
+.CodeMirror-sizer {
+  padding-bottom: 90% !important;
+}
+
 .float-win {
     position: absolute;
     position: fixed;
