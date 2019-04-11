@@ -1,3 +1,4 @@
 {
-  "ROOT": "~/blog/_posts"
+  "ROOT": "~/blog/_posts",
+  "TEMPLATES_AUTO_RELOAD":true
 }
