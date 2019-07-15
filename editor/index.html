@@ -88,7 +88,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/hypermd/ai1.js"></script>
 
-<!-- ----------------------------------------------------------------------------------- -->
 <!-- (optional) PowerPacks with 3rd-party libs (Load them before creating editor!) -->
 
 <!-- MathJax and powerpack/fold-math-with-katex -->
@@ -106,7 +105,8 @@
 <script src="https://cdn.jsdelivr.net/npm/hypermd/powerpack/paste-with-turndown.js"></script>
 
 <!-- Upload Images to https://sm.ms/  -->
-<script src="https://cdn.jsdelivr.net/npm/hypermd/powerpack/insert-file-with-smms.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/hypermd/powerpack/insert-file-with-smms.js"></script> -->
+<script src="{{ url_for('static', filename='insert-file-with-smms.js') }}"></script>
 
 <!-- Use EmojiOne to render emoji  -->
 <script src="https://cdn.jsdelivr.net/npm/emojione"></script>
@@ -117,7 +117,6 @@
 <!-- SweetAlert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
-<!-- ----------------------------------------------------------------------------------- -->
 <!-- Let's ROCK -->
 
 <script src="{{ url_for('static', filename='editor.js') }}"></script>
