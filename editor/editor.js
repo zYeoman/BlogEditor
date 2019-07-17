@@ -12,30 +12,38 @@
     hmdModeLoader: 'https://cdn.jsdelivr.net/npm/codemirror/'
   })
   var saved = document.getElementById('saved')
+  window.onbeforeunload = function () {
+    if (saved.innerText !== 'Saved!') {
+      upload()
+    }
+  }
+  function upload () {
+    var reg = /date: \d*-\d*-\d*.*/
+    var localTimeString = localeTime()
+    postAjax(
+      window.location.href,
+      { data: editor.getValue().replace(reg, 'date: ' + localTimeString) },
+      responseText => {
+        window.Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1000
+        }).fire({
+          type: 'success',
+          title: responseText
+        })
+        saved.innerText = 'Saved!'
+      }
+    )
+  }
   editor.on('change', () => {
     saved.innerText = 'Unsaved'
   })
   editor.on(
     'change',
     debounce((cm, change) => {
-      var reg = /date: \d*-\d*-\d*.*/
-      var localTimeString = localeTime()
-      postAjax(
-        window.location.href,
-        { data: editor.getValue().replace(reg, 'date: ' + localTimeString) },
-        responseText => {
-          window.Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 1000
-          }).fire({
-            type: 'success',
-            title: responseText
-          })
-          saved.innerText = 'Saved!'
-        }
-      )
+      upload()
     }, 6000)
   )
 
