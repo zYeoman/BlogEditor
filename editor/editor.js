@@ -6,10 +6,19 @@
  */
 (function () {
   'use strict'
+  var LOCAL_STORAGE = 'BlogEditorContent'
   var myTextarea = document.getElementById('md')
+  if (window.location.pathname === '/') {
+    myTextarea.value = window.localStorage[LOCAL_STORAGE] || ''
+  }
   var editor = window.HyperMD.fromTextArea(myTextarea, {
     // for code fence highlighting
     hmdModeLoader: 'https://cdn.jsdelivr.net/npm/codemirror/'
+  })
+  editor.on('change', e => {
+    if (window.location.pathname === '/') {
+      window.localStorage[LOCAL_STORAGE] = editor.getValue()
+    }
   })
   var saved = document.getElementById('saved')
   window.onbeforeunload = function () {
