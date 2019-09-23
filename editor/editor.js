@@ -13,7 +13,13 @@
   }
   var editor = window.HyperMD.fromTextArea(myTextarea, {
     // for code fence highlighting
-    hmdModeLoader: 'https://cdn.jsdelivr.net/npm/codemirror/'
+    hmdModeLoader: 'https://cdn.jsdelivr.net/npm/codemirror/',
+    mode: {
+      name: 'hypermd',
+      hashtag: true
+    },
+    lineNumbers: false,
+    theme: 'hypermd-light-transparent'
   })
   editor.on('change', e => {
     if (window.location.pathname === '/') {

@@ -84,7 +84,7 @@
 <!-- HyperMD -->
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hypermd/mode/hypermd.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hypermd/theme/hypermd-light.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='hypermd-light.css') }}">
 
 <script src="https://cdn.jsdelivr.net/npm/hypermd/ai1.js"></script>
 
@@ -109,10 +109,6 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/hypermd/powerpack/insert-file-with-smms.js"></script> -->
 <script src="{{ url_for('static', filename='insert-file-with-smms.js') }}"></script>
 
-<!-- Use EmojiOne to render emoji  -->
-<script src="https://cdn.jsdelivr.net/npm/emojione"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emojione/extras/css/emojione.min.css">
-<script src="https://cdn.jsdelivr.net/npm/hypermd/powerpack/fold-emoji-with-emojione.js"></script>
 <!-- 搜索 -->
 <script src="https://cdn.jsdelivr.net/npm/pinyin-match"></script>
 <!-- SweetAlert -->
