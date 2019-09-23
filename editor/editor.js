@@ -19,6 +19,7 @@
       hashtag: true
     },
     lineNumbers: false,
+    scrollbarStyle: 'null',
     theme: 'hypermd-light-transparent'
   })
   editor.on('change', e => {

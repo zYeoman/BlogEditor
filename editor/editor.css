@@ -119,6 +119,14 @@ h2 {
   height: 100%;
 }
 
+#sidebar::-webkit-scrollbar {
+  width: 0;
+}
+
+#sidebar a {
+  display: block;
+}
+
 #sidebar .post-item,
 #sidebar .toc-item {
   cursor: pointer;
@@ -130,7 +138,7 @@ h2 {
 #sidebar .post-item:hover,
 #sidebar .toc-item:hover {
   color: #333;
-  background: #FAFAFA;
+  background: rgba(30, 30, 30, 0.1);
 }
 
 @media (max-width: 800px) {
